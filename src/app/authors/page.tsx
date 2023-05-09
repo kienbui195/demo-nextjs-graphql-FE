@@ -12,6 +12,8 @@ import { Box, Button, Grid, Modal, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { ENDPOINT } from '../constant';
 import Link from 'next/link';
+import { GET_BOOKS_AUTHORS } from '../api';
+import {useQuery, useMutation } from '@apollo/client'
 
 const style = {
     position: 'absolute',
@@ -34,6 +36,7 @@ export default function Books() {
         name: '',
         age: '',
     })
+    const {data, error} = useQuery(GET_BOOKS_AUTHORS)
 
     const getAuthors = async () => {
         return await fetch(`${ENDPOINT}`, {
